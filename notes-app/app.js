@@ -1,7 +1,6 @@
-const getNotes = require('./note')
+const validator = require('validator')
+const getNotes = require('./notes')
 
 console.log(getNotes())
 
-// const add = require('./utils')
-// const sum = add(4, 2)
-// console.log(sum)
+console.log(validator.isURL('haituan134.com'))
