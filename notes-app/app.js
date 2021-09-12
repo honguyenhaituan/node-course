@@ -4,4 +4,4 @@ const getNotes = require('./notes')
 
 console.log(getNotes())
 console.log(validator.isURL('haituan134.com'))
-console.log(chalk.green('Success!'))
+console.log(chalk.green.inverse.bold('Success!'))
