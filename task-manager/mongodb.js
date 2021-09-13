@@ -10,19 +10,27 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
 
     const db = client.db(databaseName)
 
-    // db.collection('tasks').findOne({completed: true}, (error, task) => {
-    //     if (error) {
-    //         return console.log('Undable to fetch')
+    // db.collection('users').updateOne({
+    //     _id: new ObjectId("613faeeccc9b1f167c25c6f4")
+    // }, {
+    //     $set: {
+    //         name: 'haituan134-2',
     //     }
-
-    //     console.log(task)
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
     // })
 
-    db.collection('tasks').find({completed: true}).toArray((error, tasks) => {
-        console.log(tasks)
-    })
-
-    db.collection('tasks').find({completed: true}).count((error, count) => {
-        console.log(count)
+    db.collection('tasks').updateMany({
+        completed: true,
+    }, {
+        $set: {
+            completed: false,
+        }
+    }).then((result) => {
+        console.log(result.modifiedCount)
+    }).catch((error) => {
+        console.log(error)
     })
 })
