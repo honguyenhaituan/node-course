@@ -1,8 +1,11 @@
-const mongodb = require('mongodb')
-const MongoClient = mongodb.MongoClient
+const {MongoClient, ObjectId} = require('mongodb')
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
+
+const id = new ObjectId()
+console.log(id.id.length)
+console.log(id.toHexString())
 
 MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
     if (error) {
@@ -14,7 +17,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
 
     // db.collection('users').insertOne({
     //     name: 'Hai Tuan',
-    //     age: 22,
+    //     age: 26,
     // }, (error, result) => {
     //     if (error) {
     //         return console.log('Unable to insert user')
@@ -39,21 +42,23 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true}, (error, client) => {
     //     console.log(result.insertedCount)
     // })
 
-    db.collection('tasks').insertMany([
-        {
-            decription: "mot",
-            completed: true,
-        }, {
-            decription: "hai", 
-            completed: false,
-        }, {
-            decription: "ba", 
-            completed: true,
-        }
-    ], (error, result) => {
-        if (error) {
-            return console.log('Unable connect to server')
-        }
-        console.log(result.insertedCount)
-    })
+    // db.collection('tasks').insertMany([
+    //     {
+    //         decription: "mot",
+    //         completed: true,
+    //     }, {
+    //         decription: "hai", 
+    //         completed: false,
+    //     }, {
+    //         decription: "ba", 
+    //         completed: true,
+    //     }
+    // ], (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable connect to server')
+    //     }
+    //     console.log(result.insertedCount)
+    // })
+
+
 })
